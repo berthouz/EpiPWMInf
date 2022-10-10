@@ -129,7 +129,7 @@ plt.ylim([0,5])
 plt.title('$k=%g$' % k)
 plt.tight_layout()
 # plt.show()
-plt.savefig(fig_path + '/R0_histogram_%g_%d.png' % (k, tmax))
+plt.savefig(fig_path + 'R0_histogram_%g_%d.png' % (k, tmax))
 savetxt(fig_path + 'R0_histogram_%g_%d.csv' % (k, tmax), res[:,0])
 
 print('Mean R0 = %f' % mean(res[:,0]))
