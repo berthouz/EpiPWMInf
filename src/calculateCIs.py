@@ -53,16 +53,6 @@ def runall(seedval):
     res = np.load(res_path+'%s%spars.npy' % ('all', optim))  # After combining all files from cluster
 
 
-    # --------------------------------------------------
-    #           Exclude outliers: estimated n > N 
-    # --------------------------------------------------
-
-    outlierIdx = where(res[:,2]>N)[0]
-    if len(outlierIdx)>0:
-        print('Excluding %d estimates' % len(outlierIdx))
-        res = delete(res, outlierIdx, axis=0)
-
-
     CIres = empty((1,3))
 
     # --------------------------------------------------
@@ -80,7 +70,7 @@ def runall(seedval):
                 'gamma': res[int(seedval), 3]}
     min_ll = res[int(seedval), 4]
 
-    # Find confidence interval for tau
+    # Find confidence interval for R0
     print('Calculating confidence interval', flush=True)
     R0_tick = 0.005
     nb_ticks = 150  # This value may be insufficient for high values of the dispersion parameter -- increase to 300 for example
